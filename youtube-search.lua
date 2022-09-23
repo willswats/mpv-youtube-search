@@ -27,4 +27,4 @@ local function get_search_input()
                          "replace")
 end
 
-mp.add_key_binding(opts.key_opensearch, "search_youtube", get_search_input)
+mp.add_key_binding(opts.key_opensearch, "open-search", get_search_input)
