@@ -1,8 +1,8 @@
 # mpv-youtube-search <!-- omit in toc -->
 
-This [mpv](https://github.com/mpv-player/mpv) script searches youtube, plays the top result, and adds the results to a playlist.
+This [mpv](https://github.com/mpv-player/mpv) script searches youtube, plays the top result, and adds the results to the playlist.
 
-This script works well with [playlist-manager](https://github.com/jonniek/mpv-playlistmanager) as you can view the results with it.
+This script works well with [playlist-manager](https://github.com/jonniek/mpv-playlistmanager), [mpv-gallery-view](https://github.com/occivink/mpv-gallery-view), or any other mpv playlist viewer as you can view the results with them.
 
 ## Table of Contents <!-- omit in toc -->
 
