@@ -13,12 +13,15 @@ local opts = {
     search_results = 50
 }
 
+-- Read configuration file
 options.read_options(opts, "youtube-search")
 
 local function search_youtube(user_input)
     if not user_input then return end
+
     local search_command = "ytdl://ytsearch"
     local search_query = opts.search_results .. ":" .. user_input
+
     mp.commandv("loadfile", search_command .. search_query, "replace")
 end
 
@@ -27,6 +30,7 @@ local function open_search()
         request_text = "Enter search text:",
         replace = true
     }
+
     input.get_user_input(search_youtube, get_user_input_options, "replace")
 end
 
