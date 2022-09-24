@@ -1,4 +1,4 @@
-# mpv-youtube-search <!-- omit in toc -->
+# mpv YouTube Search <!-- omit in toc -->
 
 This [mpv](https://github.com/mpv-player/mpv) script searches youtube, plays the top result, and adds the results to the playlist.
 
