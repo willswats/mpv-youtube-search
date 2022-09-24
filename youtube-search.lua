@@ -15,16 +15,19 @@ local opts = {
 
 options.read_options(opts, "youtube-search")
 
-local function search_youtube(search_input)
-    if not search_input then return end
-    mp.commandv("loadfile", "ytdl://ytsearch" .. opts.search_results .. ":" ..
-                    search_input, "replace")
+local function search_youtube(user_input)
+    if not user_input then return end
+    local search_command = "ytdl://ytsearch"
+    local search_query = opts.search_results .. ":" .. user_input
+    mp.commandv("loadfile", search_command .. search_query, "replace")
 end
 
-local function get_search_input()
-    input.get_user_input(search_youtube,
-                         {request_text = "Enter search text:", replace = true},
-                         "replace")
+local function open_search()
+    local get_user_input_options = {
+        request_text = "Enter search text:",
+        replace = true
+    }
+    input.get_user_input(search_youtube, get_user_input_options, "replace")
 end
 
-mp.add_key_binding(opts.key_opensearch, "open-search", get_search_input)
+mp.add_key_binding(opts.key_opensearch, "open-search", open_search)
