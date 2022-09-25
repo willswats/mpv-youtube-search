@@ -17,7 +17,7 @@ local opts = {
 options.read_options(opts, "youtube-search")
 
 local function search_youtube(user_input)
-    -- Check user_input is not empty or whitespace
+    -- End if user_input does not exist or if user_input is an empty string (after removing whitespace)
     if not user_input or string.gsub(user_input, "%s+", "") == "" then return end
 
     local search_command = "ytdl://ytsearch"
