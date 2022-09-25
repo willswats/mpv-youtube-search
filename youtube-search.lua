@@ -7,7 +7,7 @@ local input = require "user-input-module"
 
 local opts = {
     -- Key to open search
-    key_opensearch = "ALT+s",
+    key_open_search = "ALT+s",
 
     -- Number of search results
     search_results = 50
@@ -29,4 +29,4 @@ local function open_search()
     input.get_user_input(search_youtube, {request_text = "Enter search text:"})
 end
 
-mp.add_key_binding(opts.key_opensearch, "open-search", open_search)
+mp.add_key_binding(opts.key_open_search, "open_search", open_search)
