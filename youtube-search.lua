@@ -81,7 +81,7 @@ local function update_search_results()
                            opts.osd_message_duration)
             return
         elseif (tonumber(user_input) < 1) then
-            mp.osd_message("Error: Input must be greater than 0",
+            mp.osd_message("Error: Input must be greater than or equal to 1",
                            opts.osd_message_duration)
             return
         elseif #user_input > 16 then
