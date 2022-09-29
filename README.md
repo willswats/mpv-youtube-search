@@ -21,4 +21,6 @@ Change the values inside of `youtube-search.conf` to configure the script.
 
 ## Keybindings
 
-`ALT+s` - Displays the text input for searching YouTube
+`ALT+s` - Open the input for searching youtube
+
+`ALT+S` - Open the input for updating the number of search results
