@@ -1,6 +1,6 @@
 # mpv YouTube Search <!-- omit in toc -->
 
-This [mpv](https://github.com/mpv-player/mpv) script uses [mpv-user-input](https://github.com/CogentRedTester/mpv-user-input) to search YouTube, play the top search result, and add the subsequent search results to the playlist.
+This [mpv](https://github.com/mpv-player/mpv) script uses [mpv-user-input](https://github.com/CogentRedTester/mpv-user-input) to; search YouTube, play the top search result, and add the subsequent search results to the playlist.
 
 This script works well with [playlist-manager](https://github.com/jonniek/mpv-playlistmanager), [mpv-gallery-view](https://github.com/occivink/mpv-gallery-view), or any other mpv playlist viewer as you can view the search results with them.
 
