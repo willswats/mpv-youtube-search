@@ -14,7 +14,7 @@ This script works well with [playlist-manager](https://github.com/jonniek/mpv-pl
 ## Features
 
 - Search YouTube, play the top search result, and add the subsequent search results to the playlist.
-- Specify the number of YouTube search results for a search by prefixing a number and a colon in the input, for example: `100:hello world`.
+- Specify the number of YouTube search results for a search by adding a number and a colon before your search query, for example: `100:hello world`.
 
 ## Installation
 
