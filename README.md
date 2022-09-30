@@ -2,7 +2,7 @@
 
 This [mpv](https://github.com/mpv-player/mpv) script uses [mpv-user-input](https://github.com/CogentRedTester/mpv-user-input) to search YouTube.
 
-The YouTube search results are added to the mpv playlist, therefore, this script works well with [mpv-playlistmanager](https://github.com/jonniek/mpv-playlistmanager), [mpv-gallery-view](https://github.com/occivink/mpv-gallery-view), or any other mpv playlist viewer.
+This script works well with [mpv-playlistmanager](https://github.com/jonniek/mpv-playlistmanager), [mpv-gallery-view](https://github.com/occivink/mpv-gallery-view), or any other mpv playlist viewer as the YouTube search results are added to the mpv playlist.
 
 ## Table of Contents <!-- omit in toc -->
 
