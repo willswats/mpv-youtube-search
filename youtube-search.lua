@@ -9,9 +9,6 @@ local opts = {
     -- Key to open the input for searching youtube
     key_search_youtube = "ALT+s",
 
-    -- Key to open the input for updating the number of search results
-    key_update_search_results = "ALT+S",
-
     -- Number of search results
     search_results = 50,
 
@@ -21,9 +18,6 @@ local opts = {
 
 -- Read configuration file
 options.read_options(opts, "youtube-search")
-
--- Add quotes to string
-local function quote(str) return "\"" .. str .. "\"" end
 
 -- Check if string is whitespace
 local function is_whitespace(str)
@@ -49,10 +43,10 @@ local function remove_whitespace(str)
     return new_str
 end
 
--- Round string to nearest integer
-local function round(str)
-    local new_str = string.format("%.0f", str)
-    return new_str
+-- Seperates a string into two strings at the first colon
+local function split_at_first_colon(str)
+    local str1, str2 = string.match(str, "(.-):(.-)$")
+    return str1, str2
 end
 
 local function search_youtube()
@@ -60,7 +54,7 @@ local function search_youtube()
         if not user_input then
             return
         elseif is_whitespace(user_input) then
-            mp.osd_message("Error: Input must include text",
+            mp.osd_message("Error: user_input must include text",
                            opts.osd_message_duration)
             return
         end
@@ -68,38 +62,30 @@ local function search_youtube()
         local search_command = "ytdl://ytsearch"
         local search_query = opts.search_results .. ":" .. user_input
 
+        local search_results, search_text = split_at_first_colon(user_input)
+
+        if is_number(search_results) then
+            local clean_search_results = remove_whitespace(search_results)
+
+            if tonumber(clean_search_results) < 1 then
+                mp.osd_message(
+                    "Error: search_results must be greater than or equal to 1",
+                    opts.osd_message_duration)
+                return
+            elseif #clean_search_results > 16 then
+                mp.osd_message(
+                    "Error: search_results must be less than 16 characters",
+                    opts.osd_message_duration)
+                return
+            end
+
+            search_query = tostring(math.floor(clean_search_results)) .. ":" ..
+                               search_text
+        end
+
         mp.commandv("loadfile", search_command .. search_query)
     end, {request_text = "Enter search text:"})
 end
 
-local function update_search_results()
-    input.get_user_input(function(user_input)
-        if not user_input then
-            return
-        elseif is_whitespace(user_input) or is_number(user_input) == false then
-            mp.osd_message("Error: Input must be a number",
-                           opts.osd_message_duration)
-            return
-        elseif (tonumber(user_input) < 1) then
-            mp.osd_message("Error: Input must be greater than or equal to 1",
-                           opts.osd_message_duration)
-            return
-        elseif #user_input > 16 then
-            mp.osd_message("Error: Input must be less than 16 characters",
-                           opts.osd_message_duration)
-            return
-        end
-
-        local new_search_results = round(remove_whitespace(user_input))
-
-        mp.osd_message("Number of search results set to " ..
-                           quote(new_search_results), opts.osd_message_duration)
-
-        opts.search_results = new_search_results
-    end, {request_text = "Enter number of search results:"})
-end
-
 -- Add key bindings
 mp.add_key_binding(opts.key_search_youtube, "search_youtube", search_youtube)
-mp.add_key_binding(opts.key_update_search_results, "update_search_results",
-                   update_search_results)
