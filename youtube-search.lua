@@ -52,6 +52,7 @@ local function remove_whitespace(str)
     return str_new
 end
 
+-- Search YouTube
 local function youtube_search(user_input, _, flag)
     if not user_input then
         return
@@ -66,6 +67,7 @@ local function youtube_search(user_input, _, flag)
     mp.commandv("loadfile", search_command .. user_input, flag)
 end
 
+-- Open the input for updating the number of search results
 local function search_results_update()
     input.get_user_input(function(user_input)
         if not user_input then
@@ -95,12 +97,14 @@ local function search_results_update()
     end, {request_text = "Enter number of search results:"})
 end
 
+-- Open the input for searching YouTube and replacing the playlist with the search results
 local function youtube_search_replace()
     input.get_user_input(youtube_search,
                          {request_text = "Enter search input (replace):"},
                          "replace")
 end
 
+-- Open the input for searching YouTube and appending the search results to the playlist
 local function youtube_search_append()
     input.get_user_input(youtube_search,
                          {request_text = "Enter search input (append):"},
