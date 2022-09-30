@@ -59,10 +59,10 @@ local function search_youtube()
             return
         end
 
-        local search_command = "ytdl://ytsearch"
-        local search_query = opts.search_results .. ":" .. user_input
+        local search_command_start = "ytdl://ytsearch"
+        local search_command_end = opts.search_results .. ":" .. user_input
 
-        local search_results, search_text = split_at_first_colon(user_input)
+        local search_results, search_query = split_at_first_colon(user_input)
 
         if is_number(search_results) then
             local clean_search_results = remove_whitespace(search_results)
@@ -79,13 +79,13 @@ local function search_youtube()
                 return
             end
 
-            search_query = tostring(math.floor(clean_search_results)) .. ":" ..
-                               search_text
+            search_command_end = tostring(math.floor(clean_search_results)) ..
+                                     ":" .. search_query
         end
 
-        mp.commandv("loadfile", search_command .. search_query)
+        mp.commandv("loadfile", search_command_start .. search_command_end)
     end, {request_text = "Enter search text:"})
 end
 
--- Add key bindings
+-- Add key binding
 mp.add_key_binding(opts.key_search_youtube, "search_youtube", search_youtube)
