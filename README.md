@@ -19,6 +19,14 @@ The YouTube search results are added to the mpv playlist, therefore, this script
 
 Change the values inside of `youtube-search.conf` to configure the script.
 
+To add the keybindings to your `input.conf` (change `i` to your desired key):
+
+```conf
+i script-binding youtube_search_replace
+i script-binding youtube_search_append
+i script-binding search_results_update
+```
+
 ## Keybindings
 
 `ALT+s` - Open the input for searching YouTube and replacing the playlist with the search results
