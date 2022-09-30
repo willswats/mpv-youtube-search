@@ -72,9 +72,9 @@ local function search_youtube()
                     "Error: search_results must be greater than or equal to 1",
                     opts.osd_message_duration)
                 return
-            elseif #clean_search_results > 16 then
+            elseif #clean_search_results > 14 then
                 mp.osd_message(
-                    "Error: search_results must be less than 16 characters",
+                    "Error: search_results must be less than 14 characters",
                     opts.osd_message_duration)
                 return
             end
