@@ -65,6 +65,12 @@ local function youtube_search(user_input, _, flag)
     local search_command = "ytdl://ytsearch" .. opts.search_results .. ":"
 
     mp.commandv("loadfile", search_command .. user_input, flag)
+
+    if flag == "append-play" then
+        mp.osd_message("Appended " .. opts.search_results ..
+                           " search result/s for " .. quote(user_input),
+                       opts.osd_message_duration)
+    end
 end
 
 -- Open the input for updating the number of search results
