@@ -1,8 +1,8 @@
 local mp = require "mp"
 local options = require "mp.options"
 
-package.path = mp.command_native({"expand-path", "~~/script-modules/?.lua;"}) ..
-                   package.path
+package.path = mp.command_native({ "expand-path", "~~/script-modules/?.lua;" }) ..
+    package.path
 local input = require "user-input-module"
 
 local opts = {
@@ -58,7 +58,7 @@ local function youtube_search(user_input, _, flag)
         return
     elseif is_whitespace(user_input) then
         mp.osd_message("Error: Input must include text",
-                       opts.osd_message_duration)
+            opts.osd_message_duration)
         return
     end
 
@@ -68,8 +68,8 @@ local function youtube_search(user_input, _, flag)
 
     if flag == "append-play" then
         mp.osd_message("Appended " .. opts.search_results ..
-                           " search result/s for " .. quote(user_input),
-                       opts.osd_message_duration)
+            " search result/s for " .. quote(user_input),
+            opts.osd_message_duration)
     end
 end
 
@@ -80,47 +80,47 @@ local function search_results_update()
             return
         elseif is_number(user_input) == false then
             mp.osd_message("Error: Input must be a number",
-                           opts.osd_message_duration)
+                opts.osd_message_duration)
             return
         elseif (tonumber(user_input) < 1) then
             mp.osd_message("Error: Input must be greater than or equal to 1",
-                           opts.osd_message_duration)
+                opts.osd_message_duration)
             return
             -- Prevent math.floor() converting to scientific notation
         elseif #user_input > 14 then
             mp.osd_message("Error: Input must be less than 14 characters",
-                           opts.osd_message_duration)
+                opts.osd_message_duration)
             return
         end
 
-        local search_results_new = tostring(
-                                       math.floor(remove_whitespace(user_input)))
+        -- Floor to prevent decimals
+        local search_results_new = remove_whitespace(tostring(math.floor(user_input)))
 
-        mp.osd_message("Number of search results set to " ..
-                           quote(search_results_new), opts.osd_message_duration)
+        mp.osd_message(" Number of search results set to " ..
+            quote(search_results_new), opts.osd_message_duration)
 
         opts.search_results = search_results_new
-    end, {request_text = "Enter number of search results:"})
+    end, { request_text = "Enter number of search results:" })
 end
 
 -- Open the input for searching YouTube and replacing the playlist with the search results
 local function youtube_search_replace()
     input.get_user_input(youtube_search,
-                         {request_text = "Enter search input (replace):"},
-                         "replace")
+        { request_text = "Enter search input (replace):" },
+        "replace")
 end
 
 -- Open the input for searching YouTube and appending the search results to the playlist
 local function youtube_search_append()
     input.get_user_input(youtube_search,
-                         {request_text = "Enter search input (append):"},
-                         "append-play")
+        { request_text = "Enter search input (append):" },
+        "append-play")
 end
 
 -- Add key bindings
 mp.add_key_binding(opts.key_youtube_search_replace, "youtube_search_replace",
-                   youtube_search_replace)
+    youtube_search_replace)
 mp.add_key_binding(opts.key_youtube_search_append, "youtube_search_append",
-                   youtube_search_append)
+    youtube_search_append)
 mp.add_key_binding(opts.key_search_results_update, "search_results_update",
-                   search_results_update)
+    search_results_update)
