@@ -18,7 +18,7 @@ local opts = {
   -- Key to open the input for updating the number of search results (does not work with YouTube Music)
   key_search_results_update = "ALT+r",
 
-  -- Default number of search results
+  -- Default number of search results (does not work with YouTube Music)
   search_results = 50,
 
   -- Duration of osd messages
