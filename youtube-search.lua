@@ -172,9 +172,9 @@ mp.add_key_binding(
   "youtube_music_search_append",
   function()
     input.get({
-      prompt = "Search with YouTube Music (replace):",
+      prompt = "Search with YouTube Music (append):",
       submit = function(user_input)
-        youtube_search(user_input, "music", "replace")
+        youtube_search(user_input, "music", "append-play")
         input.terminate()
       end
     })
@@ -186,7 +186,7 @@ mp.add_key_binding(
   "search_results_update",
   function()
     input.get({
-      prompt = "Set the number of search results for YouTube:",
+      prompt = "Set the number of search results (YouTube):",
       submit = function(user_input)
         search_results_update(user_input)
         input.terminate()
