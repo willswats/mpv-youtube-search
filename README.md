@@ -39,4 +39,4 @@ i script-binding youtube_search/search_results_update
 
 `ALT+A` - Open the input for searching YouTube Music and appending the search results to the playlist
 
-`ALT+r` - Open the input for updating the number of search results (does not work with YouTube Music)
+`ALT+r` - Open the input for setting the number of search results (does not work with YouTube Music)
