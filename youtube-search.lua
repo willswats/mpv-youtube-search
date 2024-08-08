@@ -12,7 +12,7 @@ local opts = {
   -- Key to open the input for searching YouTube (append to playlist)
   key_youtube_search_append = "ALT+a",
 
-  -- Key to open the input for searching YouTube Music (replace playlist)
+  -- Key to open the input for searching YouTube Music (append to playlist)
   key_youtube_music_search_append = "ALT+A",
 
   -- Key to open the input for setting the number of search results (does not work with YouTube Music)
