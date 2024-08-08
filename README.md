@@ -1,10 +1,6 @@
 # mpv YouTube Search
 
-This [mpv](https://github.com/mpv-player/mpv) script uses the built-in `mp.input()` to search YouTube.
-
-This script requires mpv 0.38.0 or greater, for older versions of mpv see the [mpv-v0.37.0 branch](https://github.com/willswats/mpv-youtube-search/tree/mpv-v0.37.0).
-
-This script works well with [mpv-playlistmanager](https://github.com/jonniek/mpv-playlistmanager), [mpv-gallery-view](https://github.com/occivink/mpv-gallery-view), or any other mpv playlist viewer as the search results are added to the mpv playlist.
+This [mpv](https://github.com/mpv-player/mpv) script uses the built-in `mp.input()` to search YouTube and add the results to the playlist.
 
 ## Table of Contents
 
@@ -13,6 +9,8 @@ This script works well with [mpv-playlistmanager](https://github.com/jonniek/mpv
 - [Keybindings](#keybindings)
 
 ## Installation
+
+This script requires mpv `0.38.0` or greater, for older versions of mpv see the [mpv-v0.37.0 branch](https://github.com/willswats/mpv-youtube-search/tree/mpv-v0.37.0).
 
 In your mpv `config` directory, add `youtube-search.lua` to `scripts` and (optionally) add `youtube-search.conf` to `script-opts` (create the directories if they do not exist).
 
@@ -40,4 +38,4 @@ i script-binding youtube_search/search_results_update
 
 `ALT+A` - Open the input for searching YouTube Music and appending the search results to the playlist
 
-`ALT+r` - Open the input for updating the number of search results
+`ALT+r` - Open the input for updating the number of search results (does not work with YouTube Music)
