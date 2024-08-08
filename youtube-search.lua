@@ -6,8 +6,14 @@ local opts = {
   -- Key to open the input for searching YouTube and replacing the playlist with the search results
   key_youtube_search_replace = "ALT+s",
 
+  -- Key to open the input for searching YouTube Music and appending the search results to the playlist
+  key_youtube_music_search_replace = "ALT+S",
+
   -- Key to open the input for searching YouTube and appending the search results to the playlist
   key_youtube_search_append = "ALT+a",
+
+  -- Key to open the input for searching YouTube Music and appending the search results to the playlist
+  key_youtube_music_search_append = "ALT+A",
 
   -- Key to open the input for updating the number of search results
   key_search_results_update = "ALT+r",
@@ -50,7 +56,7 @@ local function remove_whitespace(str)
 end
 
 -- Search YouTube
-local function youtube_search(user_input, flag)
+local function youtube_search(user_input, type, flag)
   if not user_input then
     return
   elseif is_whitespace(user_input) then
@@ -59,7 +65,12 @@ local function youtube_search(user_input, flag)
     return
   end
 
-  local search_command = "ytdl://ytsearch" .. opts.search_results .. ":"
+  local search_command = ""
+  if type == "youtube" then
+    search_command = "ytdl://ytsearch" .. opts.search_results .. ":"
+  elseif type == "music" then
+    search_command = "https://music.youtube.com/search?q="
+  end
 
   mp.commandv("loadfile", search_command .. user_input, flag)
 
@@ -70,9 +81,18 @@ local function youtube_search(user_input, flag)
     action = "appended"
   end
 
-  mp.osd_message("Added" .. " (" .. action .. ") " .. opts.search_results ..
-    " search result/s for " .. quote(user_input) .. " to the playlist",
-    opts.osd_message_duration)
+  local osd_message = ""
+  if type == "youtube" then
+    osd_message = "Added" .. " (" .. action .. ") " ..
+        opts.search_results .. " YT search result/s for " ..
+        quote(user_input) .. " to the playlist"
+  elseif type == "music" then
+    osd_message = "Added" .. " (" .. action .. ") "
+        .. "YT Music search result/s for " ..
+        quote(user_input) .. " to the playlist"
+  end
+
+  mp.osd_message(osd_message, opts.osd_message_duration)
 end
 
 -- Update the number of search results
@@ -103,52 +123,74 @@ local function search_results_update(user_input)
   opts.search_results = search_results_new
 end
 
--- Open the input for searching YouTube and replacing the playlist with the search results
-local function input_youtube_search_replace()
-  input.get({
-    prompt = "Enter search input (replace):",
-    submit = function(user_input)
-      youtube_search(user_input, "replace")
-      input.terminate()
-    end
-  })
-end
-
--- Open the input for searching YouTube and appending the search results to the playlist
-local function input_youtube_search_append()
-  input.get({
-    prompt = "Enter search input (append):",
-    submit = function(user_input)
-      youtube_search(user_input, "append-play")
-      input.terminate()
-    end
-  })
-end
-
--- Open the input for updating the number of search results
-local function input_search_results_update()
-  input.get({
-    prompt = "Enter number of search results:",
-    submit = function(user_input)
-      search_results_update(user_input)
-      input.terminate()
-    end
-  })
-end
 
 -- Add key bindings
 mp.add_key_binding(
   opts.key_youtube_search_replace,
   "youtube_search_replace",
-  input_youtube_search_replace
+  function()
+    input.get({
+      prompt = "Search with YouTube (replace):",
+      submit = function(user_input)
+        youtube_search(user_input, "youtube", "replace")
+        input.terminate()
+      end
+    })
+  end
 )
+
+mp.add_key_binding(
+  opts.key_youtube_music_search_replace,
+  "youtube_music_search_replace",
+  function()
+    input.get({
+      prompt = "Search with YouTube Music (replace):",
+      submit = function(user_input)
+        youtube_search(user_input, "music", "replace")
+        input.terminate()
+      end
+    })
+  end
+)
+
 mp.add_key_binding(
   opts.key_youtube_search_append,
   "youtube_search_append",
-  input_youtube_search_append
+  function()
+    input.get({
+      prompt = "Search with YouTube (append):",
+      submit = function(user_input)
+        youtube_search(user_input, "youtube", "append-play")
+        input.terminate()
+      end
+    })
+  end
 )
+
+mp.add_key_binding(
+  opts.key_youtube_music_search_append,
+  "youtube_music_search_append",
+  function()
+    input.get({
+      prompt = "Search with YouTube Music (replace):",
+      submit = function(user_input)
+        youtube_search(user_input, "music", "replace")
+        input.terminate()
+      end
+    })
+  end
+)
+
 mp.add_key_binding(
   opts.key_search_results_update,
   "search_results_update",
-  input_search_results_update
+  function()
+    input.get({
+      prompt = "Set the number of search results for YouTube:",
+      submit = function(user_input)
+        search_results_update(user_input)
+        input.terminate()
+      end
+    })
+  end
 )
