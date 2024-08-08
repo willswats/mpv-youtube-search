@@ -21,7 +21,7 @@ local opts = {
   -- Default number of search results (does not work with YouTube Music)
   search_results = 50,
 
-  -- Duration of osd messages
+  -- Duration of osd messages in seconds, set to 0 to disable osd messages
   osd_message_duration = 5
 }
 
