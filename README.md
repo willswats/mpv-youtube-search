@@ -12,7 +12,8 @@ This [mpv](https://github.com/mpv-player/mpv) script uses the built-in `mp.input
 
 This script requires mpv `0.38.0` or greater, for older versions of mpv see the [mpv-v0.37.0 branch](https://github.com/willswats/mpv-youtube-search/tree/mpv-v0.37.0).
 
-In your mpv `config` directory, add `youtube-search.lua` to `scripts` and (optionally) add `youtube-search.conf` to `script-opts` (create the directories if they do not exist).
+1. Install [yt-dlp](https://github.com/yt-dlp/yt-dlp).
+2. In your mpv `config` directory, add `youtube-search.lua` to `scripts` and (optionally) add `youtube-search.conf` to `script-opts` (create the directories if they do not exist).
 
 ## Configuration
 
