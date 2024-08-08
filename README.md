@@ -1,6 +1,6 @@
 # mpv YouTube Search
 
-This [mpv](https://github.com/mpv-player/mpv) script uses the mpv console input to search YouTube or YouTube Music.
+This [mpv](https://github.com/mpv-player/mpv) script uses the mpv console input to search YouTube or YouTube Music and add the results to the mpv playlist.
 
 ## Table of Contents
 
@@ -31,12 +31,12 @@ i script-binding youtube_search/search_results_update
 
 ## Keybindings
 
-`ALT+s` - Open the input for searching YouTube and replacing the playlist with the search results
+`ALT+s` - Open the input for searching YouTube (replace playlist)
 
-`ALT+S` - Open the input for searching YouTube Music and replacing the playlist with the search results
+`ALT+S` - Open the input for searching YouTube Music (replace playlist)
 
-`Alt+a` - Open the input for searching YouTube and appending the search results to the playlist
+`Alt+a` - Open the input for searching YouTube (append to playlist)
 
-`ALT+A` - Open the input for searching YouTube Music and appending the search results to the playlist
+`ALT+A` - Open the input for searching YouTube Music (append to playlist)
 
 `ALT+r` - Open the input for setting the number of search results (does not work with YouTube Music)
