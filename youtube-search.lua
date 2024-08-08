@@ -3,16 +3,16 @@ local options = require "mp.options"
 local input = require "mp.input"
 
 local opts = {
-  -- Key to open the input for searching YouTube and replacing the playlist with the search results
+  -- Key to open the input for searching YouTube (replace playlist)
   key_youtube_search_replace = "ALT+s",
 
-  -- Key to open the input for searching YouTube Music and replacing the playlist with the search results
+  -- Key to open the input for searching YouTube Music (replace playlist)
   key_youtube_music_search_replace = "ALT+S",
 
-  -- Key to open the input for searching YouTube and appending the search results to the playlist
+  -- Key to open the input for searching YouTube (append to playlist)
   key_youtube_search_append = "ALT+a",
 
-  -- Key to open the input for searching YouTube Music and appending the search results to the playlist
+  -- Key to open the input for searching YouTube Music (replace playlist)
   key_youtube_music_search_append = "ALT+A",
 
   -- Key to open the input for setting the number of search results (does not work with YouTube Music)
