@@ -22,7 +22,7 @@ stdenvNoCC.mkDerivation rec {
   passthru.scriptName = "youtube-search.lua";
 
   meta = with lib; {
-    description = "This mpv script uses mpv-user-input to search YouTube.";
+    description = "This mpv script uses the mpv console input to search YouTube or YouTube Music and add the results to the mpv playlist.";
     homepage = "https://github.com/willswats/mpv-youtube-search";
     license = licenses.mit;
     platforms = platforms.all;
