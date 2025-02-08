@@ -23,7 +23,13 @@ Add the following to your flake inputs:
 mpv-youtube-search.url = "github:willswats/mpv-youtube-search";
 ```
 
-You can then use the package with `inputs.mpv-youtube-search.packages.${pkgs.system}.default`, for example, with [Home Manager](https://github.com/nix-community/home-manager):
+You can then use the package with:
+
+```nix
+inputs.mpv-youtube-search.packages.${pkgs.system}.mpv-youtube-search
+```
+
+For example, with [Home Manager](https://github.com/nix-community/home-manager):
 
 ```nix
 { inputs, pkgs, ... }:
