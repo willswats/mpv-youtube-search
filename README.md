@@ -26,13 +26,13 @@ mpv-youtube-search.url = "github:willswats/mpv-youtube-search";
 You can then use the package with `inputs.mpv-youtube-search.packages.${pkgs.system}.default`, for example, with [Home Manager](https://github.com/nix-community/home-manager):
 
 ```nix
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   programs.mpv = {
     enable = true;
     scripts = with pkgs; [
-      inputs.mpv-youtube-search.packages.${pkgs.system}.default
+      inputs.mpv-youtube-search.packages.${pkgs.system}.mpv-youtube-search
     ];
   };
 }
