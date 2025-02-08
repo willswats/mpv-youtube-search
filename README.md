@@ -15,6 +15,29 @@ This script requires mpv `0.38.0` or greater, for older versions of mpv see the 
 1. Install [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 2. In your mpv `config` directory, add `youtube-search.lua` to `scripts` and (optionally) add `youtube-search.conf` to `script-opts` (create the directories if they do not exist).
 
+### NixOS
+
+Add the following to your flake inputs:
+
+```nix
+mpv-youtube-search.url = "github:willswats/mpv-youtube-search";
+```
+
+You can then use the package with `inputs.mpv-youtube-search.packages.${pkgs.system}.default`, for example, with [Home Manager](https://github.com/nix-community/home-manager):
+
+```nix
+{ pkgs, ... }:
+
+{
+  programs.mpv = {
+    enable = true;
+    scripts = with pkgs; [
+      inputs.mpv-youtube-search.packages.${pkgs.system}.default
+    ];
+  };
+}
+```
+
 ## Configuration
 
 Change the values inside of `youtube-search.conf` to configure the script.
