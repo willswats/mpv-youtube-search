@@ -26,7 +26,7 @@ mpv-youtube-search.url = "github:willswats/mpv-youtube-search";
 You can then use the package with:
 
 ```nix
-inputs.mpv-youtube-search.packages.${pkgs.system}.mpv-youtube-search
+inputs.mpv-youtube-search.packages.${pkgs.stdenv.hostPlatform.system}.mpv-youtube-search
 ```
 
 For example, with [Home Manager](https://github.com/nix-community/home-manager):
