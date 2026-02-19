@@ -38,7 +38,7 @@ For example, with [Home Manager](https://github.com/nix-community/home-manager):
   programs.mpv = {
     enable = true;
     scripts = with pkgs; [
-      inputs.mpv-youtube-search.packages.${pkgs.system}.mpv-youtube-search
+      inputs.mpv-youtube-search.packages.${pkgs.stdenv.hostPlatform.system}.mpv-youtube-search
     ];
   };
 }
