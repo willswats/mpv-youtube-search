@@ -2,6 +2,8 @@
 
 This [mpv](https://github.com/mpv-player/mpv) script uses the mpv console input to search YouTube or YouTube Music and add the results to the mpv playlist.
 
+![MPV YouTube Search](./mpv-youtube-search.png)
+
 ## Table of Contents
 
 - [Installation](#installation)
