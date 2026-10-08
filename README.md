@@ -12,7 +12,7 @@ This [mpv](https://github.com/mpv-player/mpv) script uses the mpv console input 
 
 ## Installation
 
-This script requires mpv `0.38.0` or greater, for older versions of mpv see the [mpv-v0.37.0 branch](https://github.com/willswats/mpv-youtube-search/tree/mpv-v0.37.0).
+This script requires mpv `0.38.0` or greater, for older versions of mpv see the [mpv-v0.37.0 branch](https://codeberg.org/willswats/mpv-youtube-search/src/branch/mpv-v0.37.0).
 
 1. Install [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 2. In your mpv `config` directory, add `youtube-search.lua` to `scripts` and (optionally) add `youtube-search.conf` to `script-opts` (create the directories if they do not exist).
@@ -22,7 +22,7 @@ This script requires mpv `0.38.0` or greater, for older versions of mpv see the 
 Add the following to your flake inputs:
 
 ```nix
-mpv-youtube-search.url = "github:willswats/mpv-youtube-search";
+mpv-youtube-search.url = "git+https://codeberg.org/willswats/mpv-youtube-search";
 ```
 
 You can then use the package with:
